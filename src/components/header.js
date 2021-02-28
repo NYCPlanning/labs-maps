@@ -20,8 +20,10 @@ const Header = ({ siteTitle }) => {
     }
   `)
 
-  const mapPages = data.allMdx.edges.map(page => (
-    <li><Link activeClassName="is-active" to={`/${page.node.slug}`}>{page.node.frontmatter.title}</Link></li>
+  const mapPages = data.allMdx.edges.map((page, i) => (
+    <li key={i}>
+      <Link activeClassName="is-active" to={`/${page.node.slug}`}>{page.node.frontmatter.title}</Link>
+    </li>
   ));
 
   return (

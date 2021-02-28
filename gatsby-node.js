@@ -20,8 +20,6 @@ const path = require(`path`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const mapPage = path.resolve(`./src/templates/map-page.js`);
-
   return graphql(
     `
       {
@@ -46,7 +44,7 @@ exports.createPages = ({ graphql, actions }) => {
     if (result.errors) {
       throw result.errors
     }
-
+    const mapPage = path.resolve(`./src/templates/map-page.js`);
     const maps = result.data.allMdx.edges
 
     maps.forEach((post) => {
